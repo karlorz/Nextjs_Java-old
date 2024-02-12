@@ -22,7 +22,7 @@ export default function SignIn() {
     e.preventDefault();
     try {
       const res = await signIn("credentials", {
-        username,
+        // username,
         email,
         password,
         redirect: false,

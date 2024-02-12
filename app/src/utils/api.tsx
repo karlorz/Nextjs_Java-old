@@ -2,7 +2,7 @@ import jwt from "jsonwebtoken";
 
 export default async function apiAuthProvider(credentials) {
   try {
-    const response = await fetch(`${process.env.BACKEND_API}/api/v1/auth/signin`, {
+    const response = await fetch(`${process.env.BACKEND_API}/api/v1/auth/authenticate`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

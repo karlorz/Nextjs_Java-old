@@ -9,7 +9,7 @@ const options: AuthOptions = {
     Credentials({
       name: "Credentials",
       credentials: {
-        username: { label: "Username", type: "text", placeholder: "jsmith" },
+        // username: { label: "Username", type: "text", placeholder: "jsmith" },
         email: { label: "Email", type: "email" },
         password: { label: "Password", type: "password" },
       },
@@ -34,7 +34,7 @@ const options: AuthOptions = {
     async jwt({ token, user, account, profile, isNewUser }) {
       if (account?.expires_in && token.expires_at - Date.now() < 60000) {
         try {
-          const response = await fetch("/api/auth/refresh", {
+          const response = await fetch("/api/v1/auth/refresh-token", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

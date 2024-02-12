@@ -35,7 +35,7 @@ export default function SignUp() {
     }
 
     try {
-      const res = await fetch("http://localhost:8080/api/auth/signup", {
+      const res = await fetch(`${process.env.BACKEND_API}/api/v1/auth/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

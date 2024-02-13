@@ -1,7 +1,7 @@
-import { AuthOptions } from "next-auth";
 import { NextApiRequest, NextApiResponse } from "next";
 import Credentials from "next-auth/providers/credentials";
 import NextAuth from "next-auth/next";
+import type { AuthOptions } from "next-auth"
 import apiAuthProvider from "@/utils/api";
 
 const options: AuthOptions = {
@@ -24,7 +24,7 @@ const options: AuthOptions = {
     }),
   ],
   session: {
-    jwt: true,
+    strategy: "jwt"
   },
 
   jwt: {
@@ -55,8 +55,11 @@ const options: AuthOptions = {
       }
       return token;
     },
-    async session({ session, token }) {
+    async session({ session, token, user }) {
       // session.user = token..token.
+      // Send properties to the client, like an access_token and user id from a provider.
+      // session.accessToken = token.accessToken;
+      // session.user.id = token.id;
       return session;
     },
   },

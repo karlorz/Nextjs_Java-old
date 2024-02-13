@@ -22,7 +22,8 @@ export default async function apiAuthProvider(credentials) {
     }
 
     const userID = data.userID;
-    return { ...data, userID };
+    const accessToken = data.access_token;
+    return { ...data, accessToken };
   } catch (error) {
     return { error: error.message };
   }

@@ -1,14 +1,22 @@
-import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
+import withAuth from "next-auth/middleware"
+import { authOptions } from "@/pages/api/auth/[...nextauth]";
 
-export function middleware(request: NextRequest) {
-  // // Construct the target URL with the base URL and the desired path
-  // const targetUrl = new URL("/auth/signin", request.nextUrl.origin);
+export default withAuth(
+  function middleware (req) {
+  },
+  {
+    callbacks: {
+      authorized: ({ req, token }) => {
+        if (
+          req.nextUrl.pathname.startsWith('/dashboard') &&
+          token === null
+        ) {
+          return false
+        }
+        return true
+      }
+    }
+  }
+)
 
-  // // Use NextResponse.rewrite to redirect to the target URL
-  // return NextResponse.rewrite(targetUrl);
-}
-
-export const config = {
-  matcher: "/dashboard",
-};
+export const config = { matcher: ["/dashboard/", "/dashboard/:path*"] };

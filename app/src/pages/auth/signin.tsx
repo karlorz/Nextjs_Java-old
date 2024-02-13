@@ -46,7 +46,7 @@ export default function SignIn() {
       <h1 className="text-3xl font-bold text-gray-800">Sign In</h1>
       <form className="mt-4" onSubmit={handleSubmit}>
         <div className="mb-4">
-          <label
+          {/* <label
             //make label look cooler
             className="block text-gray-700 text-sm font-bold mb-2"
             htmlFor="username"
@@ -61,7 +61,7 @@ export default function SignIn() {
             value={username}
             onChange={onChange}
             required={true}
-          />
+          /> */}
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
             htmlFor="email"

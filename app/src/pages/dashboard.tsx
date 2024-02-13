@@ -2,6 +2,7 @@ import { getSession, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { redirect } from "next/navigation";
 import { useEffect } from "react";
+import AccessToken from "@/components/accessToken";
 
 export default function Dashboard() {
   const { data: session } = useSession();
@@ -14,6 +15,7 @@ export default function Dashboard() {
       <p className="text-gray-700 mt-2 mb-4">
         Congrats, you can view this page!
       </p>
+      <AccessToken />
 
       <div className="bg-gray-500 p-4 rounded shadow">
         <p className="text-white">User: {session?.user?.email}</p>
